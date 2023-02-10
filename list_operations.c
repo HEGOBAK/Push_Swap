@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:40:45 by jchu              #+#    #+#             */
-/*   Updated: 2023/01/31 00:10:56 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/10 16:34:50 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ t_list	*new_node(int nb)
 		return (NULL);
 	new->value = nb;
 	new->index = 0;
+	new->position = 0;
+	new->t_position = 0;
+	new->cost_a = 0;
+	new->cost_b = 0;
 	new->next = NULL;
 	return (new);
 }

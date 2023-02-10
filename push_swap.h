@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:54:52 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/02 21:46:57 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/10 17:38:36 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ typedef struct node
 {
 	int			value;
 	int			index;
+	int			position;
+	int			t_position;
+	int			cost_a;
+	int			cost_b;
 	struct node	*next;
 }	t_list;
 
@@ -78,5 +82,24 @@ void		reverse_rotate_both(t_list **list_a, t_list **list_b);
 /* Three Digits Sort */
 int			find_highest_index(t_list *list);
 void		three_digits_sort(t_list **list);
+
+/* Sort */
+void		stage_1(t_list **a, t_list **b, int list_size);
+void		assign_position(t_list *list);
+int			get_target(t_list *a, int b_index);
+void		assign_target_position(t_list *a, t_list *b);
+void		sort(t_list **a, t_list **b, int list_sisze);
+
+/* Sort Cost */
+int			get_cost(int position, int list_size);
+void		assign_cost(t_list *a, t_list *b);
+int			abs_val(int nb);
+int			total_cost(int a, int b);
+
+/* Sort Do Move */
+void		do_rotate_a(t_list **list, int cost);
+void		do_rotate_b(t_list **a, int cost);
+void		move(t_list **a, t_list **b, t_list *node);
+void		do_move(t_list **a, t_list **b);
 
 #endif

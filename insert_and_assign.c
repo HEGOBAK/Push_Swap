@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:24:24 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/01 23:09:04 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/10 16:23:39 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	assign_indexes(t_list *list)
 	while (list)
 	{
 		tmp = hold;
-		bigger_count = 0;
+		bigger_count = 1;
 		while (tmp)
 		{
-			if (list->value >= tmp->value)
+			if (list->value > tmp->value)
 				bigger_count++;
 			tmp = tmp->next;
 		}
