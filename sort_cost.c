@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 23:10:49 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/11 06:38:07 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/11 15:17:40 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,17 @@ int	get_cost(int position, int list_size)
 	return (position);
 }
 
-void	assign_cost(t_list **a, t_list **b)
+void	assign_cost(t_list *a, t_list *b)
 {
-	t_list	*list_a;
 	t_list	*list_b;
 
-	list_a = *a;
-	list_b = *b;
+	list_b = b;
 	while (list_b)
 	{
-		//printlist(list_a);
-		//printlist(list_b);
-		list_b->cost_a = get_cost(list_b->t_position, get_list_size(list_a));
-		list_b->cost_b = get_cost(list_b->position, get_list_size(list_b));
+		list_b->cost_a = get_cost(list_b->t_position, get_list_size(a));
+		list_b->cost_b = get_cost(list_b->position, get_list_size(b));
+		// printlist(a);
+		// printlist(b);
 		list_b = list_b->next;
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 23:10:49 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/11 05:19:56 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/11 18:09:36 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stage_1(t_list **a, t_list **b, int list_size)
+void	first_stage(t_list **a, t_list **b, int list_size)
 {
 	int	count;
 	int	pushed;
@@ -35,16 +35,53 @@ void	stage_1(t_list **a, t_list **b, int list_size)
 		push_a_to_b(a, b);
 		pushed++;
 	}
+	three_digits_sort(a);
+}
+
+void	middle_stage(t_list **a, t_list **b)
+{
+	while (*b)
+	{
+		assign_target_position(*a, *b);
+		assign_cost(*a, *b);
+		do_move(a, b);
+	}
+}
+
+void	final_stage(t_list **a, int list_size)
+{
+	int		l_pos;
+
+	l_pos = get_lowest_index_position(*a);
+	//printf ("%d\n", l_pos);
+	if (is_list_sorted(*a))
+		return ;
+	else
+	{
+		if (l_pos < list_size / 2)
+		{
+			while (l_pos != 0)
+			{
+				rotate_a(a);
+				l_pos--;
+			}
+		}
+		else
+		{
+			while (l_pos < list_size)
+			{
+				reverse_rotate_a(a);
+				l_pos++;
+			}
+		}
+	}
 }
 
 void	sort(t_list **a, t_list **b, int list_size)
 {
-	stage_1(a, b, list_size);
-	three_digits_sort(a);
-	while (*b)
-	{
-		assign_target_position(*a, *b);
-		assign_cost(a, b);
-		do_move(a, b);
-	}
+	first_stage(a, b, list_size);
+	middle_stage(a, b);
+	//printlist(*a);
+	final_stage(a, get_list_size(*a));
+	//printlist(*a);
 }

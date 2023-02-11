@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:54:52 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/11 05:19:50 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/11 17:20:35 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,20 @@ int			find_highest_index(t_list *list);
 void		three_digits_sort(t_list **list);
 
 /* Sort */
-void		stage_1(t_list **a, t_list **b, int list_size);
+void		first_stage(t_list **a, t_list **b, int list_size);
+void		middle_stage(t_list **a, t_list **b);
+void		last_stage(t_list **a);
 void		sort(t_list **a, t_list **b, int list_sisze);
 
 /* Sort Position */
 void		assign_position(t_list *list);
+int			get_lowest_index_position(t_list *list);
 int			get_target(t_list *a, int b_index);
 void		assign_target_position(t_list *a, t_list *b);
 
 /* Sort Cost */
 int			get_cost(int position, int list_size);
-void		assign_cost(t_list **a, t_list **b);
+void		assign_cost(t_list *a, t_list *b);
 int			abs_val(int nb);
 int			total_cost(int a, int b);
 

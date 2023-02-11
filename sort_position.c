@@ -6,7 +6,7 @@
 /*   By: jchu <jchu@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 23:10:49 by jchu              #+#    #+#             */
-/*   Updated: 2023/02/11 04:33:11 by jchu             ###   ########.fr       */
+/*   Updated: 2023/02/11 18:09:33 by jchu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,29 @@ void	assign_position(t_list *list)
 		i++;
 		//printlist(list);
 	}
+}
+
+int	get_lowest_index_position(t_list *list)
+{
+	int	ret;
+	int	l_pos;
+
+	assign_position(list);
+	l_pos = list->index;
+	while (list)
+	{
+		//printf (" TEST \n");
+		if (list->index <= l_pos)
+		{
+			//printf (" IN \n");
+			l_pos = list->index;
+			ret = list->position;
+			//printf (" list index : %d ", list->index);
+			//printf (" index position : %d ", list->position);
+		}
+		list = list->next;
+	}
+	return (ret);
 }
 
 int	get_target(t_list *a, int b_index)
@@ -50,7 +73,9 @@ int	get_target(t_list *a, int b_index)
 	}
 	if (t_index != INT_MAX)
 		return (t_pos);
-	return ((get_list_bottom(a))->position);
+	//printlist(a);
+	//printf ("--%d", get_lowest_index_position(a));
+	return (get_lowest_index_position(a));
 }
 
 void	assign_target_position(t_list *a, t_list *b)
