@@ -44,10 +44,10 @@ $(NAME): $(OBJS)
  
 all: $(NAME)
 
-clean: clean
+clean:
 	rm -f $(OBJS)
 
-fclean:
-	rm -f $(OBJS) $(NAME) $(AR_NAME)
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
